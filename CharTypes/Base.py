@@ -23,7 +23,10 @@ class Base:
         return False
 
     def die(self):
-        alive = False
+        self._alive = False
 
     def basicAttack(self, other):
         self.hit(other, self._AD)
+
+    def gethealth(self):
+        return round(self._health,2)

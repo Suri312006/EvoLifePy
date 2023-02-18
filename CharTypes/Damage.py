@@ -1,4 +1,4 @@
-from Base import Base
+from CharTypes.Base import Base
 
 
 class Damage(Base):

@@ -1,4 +1,4 @@
-from Base import Base
+from CharTypes.Base import Base
 
 
 class Fighter(Base):
@@ -11,13 +11,14 @@ class Fighter(Base):
         self._seriousPunchCost = 25
 
     def bite(self, other):
-        other.getHit(other.health * self._maxHpPercentage)
+
+        other.getHit(other.gethealth() * self._maxHpPercentage)
 
     def basicAttack(self, other):
-        other.getHit(self.AD * (1 + self._inverseADMult * (1 / self._health)))
+        other.getHit(self._AD * (1 + self._inverseADMult * (1 / self._health)))
 
     def seriousPunch(self, other):
         if super().manaCheck(self._seriousPunchCost):
-            other.getHit(other.health*self._inverseADMult*(1/self._health*0.1))
+            other.getHit(other.gethealth()*self._inverseADMult*(1/self._health*0.1))
         else:
             print("Cannot use Serious Punch move, not enough mana")
