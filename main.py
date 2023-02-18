@@ -3,22 +3,25 @@ from CharTypes.Mage import Mage as mag
 from CharTypes.Fighter import Fighter as fig
 from CharTypes.Tank import Tank as tan
 
-
 Player1 = ass()
 Player2 = fig()
 
+
 def healthReportP1():
-    print("Player 1 now has {} health".format(Player1.gethealth()))
+    print("Player 1 now has {} health".format(Player1.get_health()))
+
 
 def healthReportP2():
-    print("Player 2 now has {} health".format(Player2.gethealth()))
+    print("Player 2 now has {} health".format(Player2.get_health()))
+
 
 def sop(string):
     print(string)
 
+
 def main():
     healthReportP2()
-    Player1.basicAttack(Player2)
+    Player1.basic_attack(Player2)
     sop("Player 1 used Basic attack on Player 2")
     healthReportP2()
     Player2.bite(Player1)
@@ -35,9 +38,8 @@ def main():
     healthReportP2()
     sop("Player 1 wins!")
 
+
 if __name__ == '__main__':
-
-   main()
-
+    main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

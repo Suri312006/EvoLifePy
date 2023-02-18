@@ -3,8 +3,8 @@ from CharTypes.Base import Base
 
 class Fighter(Base):
 
-    def __init__(self, health=120, AD=20, AP=25, mana=40, alive=True, maxHpPercentage=0.15):
-        super().__init__(health, AD, AP, mana, alive)
+    def __init__(self, health=120, ad=20, ap=25, mana=40, alive=True, maxHpPercentage=0.15):
+        super().__init__(health, ad, ap, mana, alive)
         self._maxHpPercentage = maxHpPercentage
 
         self._inverseADMult = 2
@@ -12,13 +12,13 @@ class Fighter(Base):
 
     def bite(self, other):
 
-        other.getHit(other.gethealth() * self._maxHpPercentage)
+        other.get_hit(other.get_health() * self._maxHpPercentage)
 
-    def basicAttack(self, other):
-        other.getHit(self._AD * (1 + self._inverseADMult * (1 / self._health)))
+    def basic_attack(self, other):
+        other.get_hit(self._AD * (1 + self._inverseADMult * (1 / self._health)))
 
     def seriousPunch(self, other):
-        if super().manaCheck(self._seriousPunchCost):
-            other.getHit(other.gethealth()*self._inverseADMult*(1/self._health*0.1))
+        if super().mana_check(self._seriousPunchCost):
+            other.get_hit(other.get_health() * self._inverseADMult * (1 / self._health * 0.1))
         else:
             print("Cannot use Serious Punch move, not enough mana")
