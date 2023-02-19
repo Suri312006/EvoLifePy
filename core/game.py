@@ -58,12 +58,21 @@ def healthbar(player, x_cord, y_cord, length=100, height=30, offset=10):
 
     hp_bar_le = (current_hp_percentage / 100) * length
 
+
+def hpbar(player, x_cord, y_cord):
+    length = player.get_hp_bar().hp_bar_length
+    height = player.get_hp_bar().hp_bar_height
+
+    hp_bar_le = player.get_hp_bar().hp_bar_length
+    hp_color = player.get_hp_bar().hp_color
+    offset = player.get_hp_bar().get_offset()
     # background rect
+
     pygame.draw.rect(game_display, color=GRAY, rect=(x_cord, y_cord, length, height))
     # fillin rect
     pygame.draw.rect(game_display, color=WHITE,
                      rect=(x_cord + offset / 2, y_cord + offset / 2, length - offset, height - offset))
-    #actual changing rect
+    # actual changing rect
     pygame.draw.rect(game_display, color=hp_color,
                      rect=(x_cord + offset / 2, y_cord + offset / 2, hp_bar_le - offset, height - offset))
     du()
@@ -77,7 +86,7 @@ def main():
                 pygame.quit()
                 quit()
 
-        healthbar(Player1, 50, 50)
+        hpbar(Player1, 50, 50)
         clock.tick(60)
 
 

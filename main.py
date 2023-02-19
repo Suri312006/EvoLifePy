@@ -1,7 +1,5 @@
-from CharTypes.Assasin import Assassin as ass
-from CharTypes.Mage import Mage as mag
-from CharTypes.Fighter import Fighter as fig
-from CharTypes.Tank import Tank as tan
+from core.CharTypes.Assasin import Assassin as ass
+from core.CharTypes.Fighter import Fighter as fig
 
 Player1 = ass(name="lol")
 Player2 = fig(name="okay")

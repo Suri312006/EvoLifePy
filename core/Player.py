@@ -1,10 +1,9 @@
-from CharTypes.Assasin import Assassin as ass
-from CharTypes.Mage import Mage as mag
-from CharTypes.Fighter import Fighter as fig
-from CharTypes.Tank import Tank as tan
+from core.CharTypes.Assasin import Assassin as ass
 from core.Healthbar import Healthbar as hbar
 class Player:
 
-    def __init__(self, character=ass(name="default"), ):
+    def __init__(self, character=ass(name="default"), hp_x_cord=100, hp_y_cord=100):
         self._character = character
-        self._
+        self._hbar = hbar(character,x_cord=hp_x_cord, y_cord=hp_y_cord)
+
+        ###multiple inheritance?

@@ -1,4 +1,4 @@
-from CharTypes.Damage import Damage
+from core.CharTypes.Damage import Damage
 
 
 class Assassin(Damage):
