@@ -1,17 +1,19 @@
 import time
 import pygame
 from pygame.locals import *
+
 from CharTypes.Assasin import Assassin as ass
 from CharTypes.Mage import Mage as mag
 from CharTypes.Fighter import Fighter as fig
 from CharTypes.Tank import Tank as tan
+
 from core.util import Colors as color
+
 Player1 = ass(name="lol")
 Player2 = fig(name="okay")
 
 WIDTH = 1000
 HEIGHT = 800
-
 
 game_display = pygame.display.set_mode([WIDTH, HEIGHT])
 event = pygame.event.wait()
@@ -57,18 +59,16 @@ def game_loop():
 
 
 def game_update():
-
     hpbar(Player1, 50, 50)
-
+    hpbar(Player2, 100, 100)
 
 
 def main():
     draw_env()
-    Player1.get_hit(70)
     print(Player1.health_report())
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+        for action in pygame.event.get():
+            if action.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 

@@ -15,7 +15,7 @@ class Healthbar:
         self.hp_bar_height = height
         self.offset = offset
 
-        self.hp_color = color.white()
+        self.hp_color = color.green()
 
     def update_status(self):
         self._current_hp = self._player.health_report()[0]
