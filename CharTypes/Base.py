@@ -1,6 +1,6 @@
 class Base:
 
-    def __init__(self,name='nothing', health=100, ad=15, ap=20, mana=40, alive=True):
+    def __init__(self, name='nothing', health=100, ad=15, ap=20, mana=40, alive=True):
         self._name = name
         self._max_health = health
         self._health = health
@@ -31,10 +31,14 @@ class Base:
         self.hit(other, self._AD)
 
     def get_health(self):
-        return round(self._health,2)
+        return round(self._health, 2)
 
     def get_max_health(self):
-        return round(self._max_health,2)
+        return round(self._max_health, 2)
 
     def get_name(self):
         return self._name
+
+    def health_report(self):
+        return [self.get_health(),
+                100 * round(self.get_health() / self.get_max_health(), 4)]

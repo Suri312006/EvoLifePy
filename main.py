@@ -6,9 +6,9 @@ from CharTypes.Tank import Tank as tan
 Player1 = ass(name="lol")
 Player2 = fig(name="okay")
 
-def health_report(player):
-    print("{} now has {} health({}%)".format(player.get_name(),player.get_health(),
-                                            100 * round(player.get_health() / player.get_max_health(), 4)))
+
+def healthrep(player):
+    print("{} has {} health ({}%)".format(player.get_name(), player.health_report()[0], player.health_report()[1]))
 
 
 def sop(string):
@@ -16,22 +16,22 @@ def sop(string):
 
 
 def main():
-    health_report(Player1)
+    healthrep(Player1)
     Player1.basic_attack(Player2)
     sop("Player 1 used Basic attack on Player 2")
-    health_report(Player2)
+    healthrep(Player2)
     Player2.bite(Player1)
     sop("Player 2 used bite on Player 1")
     Player1.basic_attack(Player2)
     Player1.barrage(Player2)
     sop("Player 1 used Barrage on Player 2")
-    health_report(Player2)
+    healthrep(Player2)
     Player2.serious_punch(Player1)
     sop("Player 2 used Serious Punch on Player 1")
-    health_report(Player2)
+    healthrep(Player2)
     Player1.slash(Player2)
     sop("Player 1 used Slash on Player 2")
-    health_report(Player2)
+    healthrep(Player2)
     sop("Player 1 wins!")
 
 
