@@ -17,7 +17,7 @@ class Fighter(Base):
     def basic_attack(self, other):
         other.get_hit(self._AD * (1 + self._inverseADMult * (1 / self._health)))
 
-    def seriousPunch(self, other):
+    def serious_punch(self, other):
         if super().mana_check(self._seriousPunchCost):
             other.get_hit(other.get_health() * self._inverseADMult * (1 / self._health * 0.1))
         else:

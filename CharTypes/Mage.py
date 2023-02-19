@@ -6,9 +6,9 @@ class Mage(Damage):
         self._spell_surge_cose = 15;
 
     def basic_attack(self, other):
-        other.get_hit((self._AD * 0.5 + super.getAD * 0.5) * 1.5)
+        other.get_hit((self._AD * 0.5 + self._AP * 0.5) * 1.5)
 
-    def spellSurge(self, other):
+    def spell_surge(self, other):
         if self.mana_check(self._spell_surge_cose):
             other.get_hit(self._AP * 2)
         else:

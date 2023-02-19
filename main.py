@@ -30,7 +30,7 @@ def main():
     Player1.barrage(Player2)
     sop("Player 1 used Barrage on Player 2")
     healthReportP2()
-    Player2.seriousPunch(Player1)
+    Player2.serious_punch(Player1)
     sop("Player 2 used Serious Punch on Player 1")
     healthReportP1()
     Player1.slash(Player2)

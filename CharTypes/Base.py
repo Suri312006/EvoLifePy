@@ -16,9 +16,9 @@ class Base:
     def hit(self, other, damage):
         other.get_hit(damage)
 
-    def mana_check(self, moveCost):
-        if self._mana > moveCost:
-            self._mana -= moveCost
+    def mana_check(self, move_cost):
+        if self._mana > move_cost:
+            self._mana -= move_cost
             return True
         return False
 

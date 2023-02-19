@@ -9,7 +9,7 @@ class Tank(Base):
         self._stall = stall
 
     def stallMove(self):
-        self._stall = True;
+        self._stall = True
 
     def hit(self, other, damage):
         if not self._stall:
