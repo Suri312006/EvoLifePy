@@ -9,8 +9,8 @@ from CharTypes.Tank import Tank as tan
 
 from core.util import Colors as color
 
-Player1 = ass(name="lol")
-Player2 = fig(name="okay")
+Player1 = ass(name="Zed")
+Player2 = mag(name="Lux")
 
 WIDTH = 1000
 HEIGHT = 800
@@ -26,7 +26,7 @@ def du():
 
 def init():
     pygame.init()
-    pygame.display.set_caption("A bit Racey")
+    pygame.display.set_caption("EvoLife")
     clock.tick(60)
 
 
@@ -53,14 +53,18 @@ def hpbar(player, x_cord, y_cord):
                      rect=(x_cord + offset / 2, y_cord + offset / 2, hp_bar_le - offset, height - offset))
     du()
 
+def prompt_playe1():
+    move1name = Player1.get_move1()
+
 
 def game_loop():
+
     pass
 
 
 def game_update():
-    hpbar(Player1, 50, 50)
-    hpbar(Player2, 100, 100)
+    hpbar(Player1, WIDTH/3 - Player1.get_hp_bar().get_max_length(), HEIGHT/2)
+    hpbar(Player2, 2*WIDTH/3, HEIGHT/2)
 
 
 def main():

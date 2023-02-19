@@ -13,10 +13,10 @@ class Tank(Base):
 
     def hit(self, other, damage):
         if not self._stall:
-            super().get_hit(damage * (1 - self._armor))
+            self.get_hit(damage * (1 - self._armor))
         else:
             other.get_hit(self._armor * 0.5)
-        stall = False
+        self._stall = False
 
     def heal(self):
-        super().add_health(self._healAmount)
+        self.add_health(self._healAmount)

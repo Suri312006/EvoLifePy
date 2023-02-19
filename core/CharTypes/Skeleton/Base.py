@@ -1,5 +1,6 @@
 from core.CharTypes.Skeleton.Healthbar import Healthbar as hpbar
 
+
 class Base:
 
     def __init__(self, name='nothing', health=100, ad=15, ap=20, mana=40, alive=True, hp_x_cord=20, hp_y_cord=20):
@@ -11,6 +12,7 @@ class Base:
         self._mana = mana
         self._alive = alive
         self._hbar = hpbar(self)
+        self._basic_attack_cost = 1
 
     def add_health(self, additional_health):
         self._health += additional_health
@@ -48,3 +50,9 @@ class Base:
 
     def get_hp_bar(self):
         return self._hbar
+
+    def move1(self, other):
+        self.basic_attack(other)
+
+    def get_move1(self):
+        return "Basic Attack", self._basic_attack_cost
