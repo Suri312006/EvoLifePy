@@ -5,21 +5,13 @@ from CharTypes.Assasin import Assassin as ass
 from CharTypes.Mage import Mage as mag
 from CharTypes.Fighter import Fighter as fig
 from CharTypes.Tank import Tank as tan
-
+from core.util import Colors as color
 Player1 = ass(name="lol")
 Player2 = fig(name="okay")
 
 WIDTH = 1000
 HEIGHT = 800
 
-WHITE = (255, 255, 255)
-GRAY = (50, 50, 50)
-
-GREEN = (0, 255, 0)
-LGREEN = (155, 255, 125)
-YELLOW = (255, 255, 0)
-LRED = (255, 155, 155)
-RED = (255, 0, 0)
 
 game_display = pygame.display.set_mode([WIDTH, HEIGHT])
 event = pygame.event.wait()
@@ -37,7 +29,7 @@ def init():
 
 
 def draw_env():
-    game_display.fill(WHITE)
+    game_display.fill(color.white())
     du()
 
 
@@ -50,9 +42,9 @@ def hpbar(player, x_cord, y_cord):
     offset = player.get_hp_bar().offset
     # background rect
 
-    pygame.draw.rect(game_display, color=GRAY, rect=(x_cord, y_cord, length, height))
+    pygame.draw.rect(game_display, color=color.gray(), rect=(x_cord, y_cord, length, height))
     # fillin rect
-    pygame.draw.rect(game_display, color=WHITE,
+    pygame.draw.rect(game_display, color=color.white(),
                      rect=(x_cord + offset / 2, y_cord + offset / 2, length - offset, height - offset))
     # actual changing rect
     pygame.draw.rect(game_display, color=hp_color,

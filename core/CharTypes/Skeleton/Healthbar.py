@@ -1,11 +1,4 @@
-WHITE = (255, 255, 255)
-GRAY = (50, 50, 50)
-
-GREEN = (0, 255, 0)
-LGREEN = (155, 255, 125)
-YELLOW = (255, 255, 0)
-LRED = (255, 155, 155)
-RED = (255, 0, 0)
+from core.util import Colors as color
 
 
 class Healthbar:
@@ -22,7 +15,7 @@ class Healthbar:
         self.hp_bar_height = height
         self.offset = offset
 
-        self.hp_color = GREEN
+        self.hp_color = color.white()
 
     def update_status(self):
         self._current_hp = self._player.health_report()[0]
@@ -31,13 +24,13 @@ class Healthbar:
     def get_color(self):
         self.update_status()
         if 60 < self._current_hp_percentage < 80:
-            self.hp_color = LGREEN
+            self.hp_color = color.light_green()
         if 40 < self._current_hp_percentage < 60:
-            self.hp_color = YELLOW
+            self.hp_color = color.yellow()
         if 20 < self._current_hp_percentage < 40:
-            self.hp_color = LRED
+            self.hp_color = color.light_red()
         if 0 < self._current_hp_percentage < 20:
-            self.hp_color = RED
+            self.hp_color = color.red()
 
         return self.hp_color
 
