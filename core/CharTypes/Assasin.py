@@ -1,4 +1,4 @@
-from core.CharTypes.Damage import Damage
+from core.CharTypes.Skeleton.Damage import Damage
 
 
 class Assassin(Damage):
@@ -14,3 +14,15 @@ class Assassin(Damage):
 
     def slash(self, other):
         other.get_hit(self._AD)
+
+    def get_move1(self):
+        pass
+
+    def get_move2(self):
+        pass
+
+    def get_move3(self):
+        pass
+
+    def get_move4(self):
+        pass

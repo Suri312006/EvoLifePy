@@ -1,4 +1,4 @@
-from core.CharTypes.Base import Base
+from core.CharTypes.Skeleton.Base import Base
 
 
 class Fighter(Base):

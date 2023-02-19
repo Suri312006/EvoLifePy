@@ -1,4 +1,4 @@
-from core.Healthbar import Healthbar as hpbar
+from core.CharTypes.Skeleton.Healthbar import Healthbar as hpbar
 
 class Base:
 

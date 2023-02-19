@@ -1,4 +1,4 @@
-from core.CharTypes.Base import Base
+from core.CharTypes.Skeleton.Base import Base
 
 
 class Tank(Base):
@@ -8,7 +8,7 @@ class Tank(Base):
         self._healAmount = healAmount
         self._stall = stall
 
-    def stallMove(self):
+    def stall_move(self):
         self._stall = True
 
     def hit(self, other, damage):

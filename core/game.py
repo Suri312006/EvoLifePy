@@ -41,31 +41,13 @@ def draw_env():
     du()
 
 
-def healthbar(player, x_cord, y_cord, length=100, height=30, offset=10):
-    max_hp = player.get_max_health()
-    current_hp = player.health_report()[0]
-    current_hp_percentage = player.health_report()[1]
-
-    hp_color = GREEN
-    if 60 < current_hp_percentage < 80:
-        hp_color = LGREEN
-    if 40 < current_hp_percentage < 60:
-        hp_color = YELLOW
-    if 20 < current_hp_percentage < 40:
-        hp_color = LRED
-    if 0 < current_hp_percentage < 20:
-        hp_color = RED
-
-    hp_bar_le = (current_hp_percentage / 100) * length
-
-
 def hpbar(player, x_cord, y_cord):
-    length = player.get_hp_bar().hp_bar_length
+    length = player.get_hp_bar().get_max_length()
     height = player.get_hp_bar().hp_bar_height
 
-    hp_bar_le = player.get_hp_bar().hp_bar_length
-    hp_color = player.get_hp_bar().hp_color
-    offset = player.get_hp_bar().get_offset()
+    hp_bar_le = player.get_hp_bar().get_current_length()
+    hp_color = player.get_hp_bar().get_color()
+    offset = player.get_hp_bar().offset
     # background rect
 
     pygame.draw.rect(game_display, color=GRAY, rect=(x_cord, y_cord, length, height))
@@ -78,25 +60,31 @@ def hpbar(player, x_cord, y_cord):
     du()
 
 
+def game_loop():
+    pass
+
+
+def game_update():
+
+    hpbar(Player1, 50, 50)
+
+
+
 def main():
     draw_env()
+    Player1.get_hit(70)
+    print(Player1.health_report())
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 
-        hpbar(Player1, 50, 50)
+        game_loop()
+        game_update()
         clock.tick(60)
 
 
 if __name__ == '__main__':
     init()
     main()
-
-##healthbar ???
-"""
-need to create a health bar of some sort?
-color changes with thingy
-
-"""

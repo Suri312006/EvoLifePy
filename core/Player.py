@@ -1,5 +1,5 @@
 from core.CharTypes.Assasin import Assassin as ass
-from core.Healthbar import Healthbar as hbar
+from core.CharTypes.Skeleton.Healthbar import Healthbar as hbar
 class Player:
 
     def __init__(self, character=ass(name="default"), hp_x_cord=100, hp_y_cord=100):

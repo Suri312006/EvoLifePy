@@ -1,4 +1,5 @@
-from core.CharTypes.Damage import Damage
+from core.CharTypes.Skeleton.Damage import Damage
+
 
 class Mage(Damage):
     def __init__(self, health=120, ad=20, ap=25, mana=40, alive=True):
