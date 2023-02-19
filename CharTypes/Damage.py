@@ -2,8 +2,8 @@ from CharTypes.Base import Base
 
 
 class Damage(Base):
-    def __init__(self, health=120, ad=20, ap=25, mana=40, alive=True):
-        super().__init__(health, ad, ap, mana, alive)
+    def __init__(self, name="damage",health=120, ad=20, ap=25, mana=40, alive=True):
+        super().__init__(name,health, ad, ap, mana, alive)
         self._barrageCost = 15
 
     def barrage(self, other):
