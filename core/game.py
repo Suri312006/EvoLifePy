@@ -1,6 +1,6 @@
 import pygame
 
-from core.Characters.CharArchetypes.Assasin import Assassin as ass
+from core.Characters.CharArchetypes.Assassin import Assassin as ass
 from core.Characters.CharArchetypes.Mage import Mage as mag
 
 from core.util import Colors as color
