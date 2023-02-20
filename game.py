@@ -9,14 +9,33 @@ from core.elements.Button import Button as Button
 Player1 = ass(name="Zed")
 Player2 = mag(name="Lux")
 
-WIDTH = 1000
-HEIGHT = 800
+game_display = pygame.display.set_mode([0, 0],pygame.FULLSCREEN)
+##opens in full screen
+##can be alt tabbed
+##minimize?
 
-game_display = pygame.display.set_mode([WIDTH, HEIGHT])
+
+
+
+
+WIDTH = pygame.display.Info().current_w
+HEIGHT = pygame.display.Info().current_h
+
 event = pygame.event.wait()
 clock = pygame.time.Clock()
 
 player1_attack = Button(text="attack", action=Player1.basic_attack, action_target=Player2)
+fullscreen_toggle = Button(text="toggle fullscreen", action=pygame.display.set_mode, action_target=[800,800])
+
+
+def loop_display_info():
+    global WIDTH, HEIGHT
+    WIDTH = pygame.display.Info().current_w
+    HEIGHT = pygame.display.Info().current_h
+
+    #button(fullscreen_toggle, WIDTH/5, HEIGHT/5)
+
+
 
 
 def du():
@@ -48,7 +67,7 @@ def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.
     du()
 
 
-def hpbar(player, x_cord, y_cord):
+def hpbar(player, x_cord, y_cord,):
     length = player.get_hp_bar().get_max_length()
     height = player.get_hp_bar().hp_bar_height
 
@@ -78,9 +97,11 @@ def button(butt, x_cord=0, y_cord=0):
                          (x_cord, y_cord, butt.width, butt.height))
 
         if not butt.clicked:
-            if click[0] == 1 and butt.action is not None:
+            if click[0] == 1 and butt.action is not None and butt.action_target is not None:
                 butt.action(butt.action_target)
-                butt.clicked = True
+            if click[0] == 1 and butt.action is not None and butt.action_target is None:
+                butt.action()
+            butt.clicked = True
 
         if click[0] == 0:
             butt.clicked = False
@@ -95,12 +116,14 @@ def button(butt, x_cord=0, y_cord=0):
 
 def game_loop():
     button(player1_attack, 200, 200)
+
     pass
 
 
 def game_update():
-    hpbar(Player1, WIDTH / 3 - Player1.get_hp_bar().get_max_length(), HEIGHT / 2)
+    hpbar(Player1, WIDTH / 3 - Player1.get_hp_bar().get_max_length(),HEIGHT / 2, )
     hpbar(Player2, 2 * WIDTH / 3, HEIGHT / 2)
+
 
 
 def main():
@@ -110,7 +133,7 @@ def main():
             if action.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-
+        loop_display_info()
         game_loop()
         game_update()
         clock.tick(60)
