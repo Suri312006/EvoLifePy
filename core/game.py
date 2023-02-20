@@ -64,7 +64,7 @@ def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.
 
 clicked = False
 def button(text="default", font='arial', text_size=10,text_color=color.black(), x_cord=0, y_cord=0, width=75, height=15, inactive_color=color.light_red(), active_color=color.red(), action=None, action_target=None):
-    global clicked
+    global  clicked
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
@@ -76,6 +76,8 @@ def button(text="default", font='arial', text_size=10,text_color=color.black(), 
             if click[0] == 1 and action is not None:
                 action(action_target)
                 clicked = True
+
+        if click[0] == 0: clicked = False
 
 
     else:
