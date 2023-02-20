@@ -38,9 +38,10 @@ def hpbar(player, x_cord, y_cord):
     hp_bar_le = player.get_hp_bar().get_current_length()
     hp_color = player.get_hp_bar().get_color()
     offset = player.get_hp_bar().offset
-    # background rect
 
-    pygame.draw.rect(game_display, color=color.gray(), rect=(x_cord, y_cord, length, height))
+    # background rect
+    pygame.draw.rect(game_display, color=color.gray(),
+                     rect=(x_cord, y_cord, length, height))
     # fillin rect
     pygame.draw.rect(game_display, color=color.white(),
                      rect=(x_cord + offset / 2, y_cord + offset / 2, length - offset, height - offset))
@@ -49,23 +50,32 @@ def hpbar(player, x_cord, y_cord):
                      rect=(x_cord + offset / 2, y_cord + offset / 2, hp_bar_le - offset, height - offset))
     du()
 
-def prompt_playe1():
-    move1name = Player1.get_move1()
+
+def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.black()):
+    font = pygame.sysfont.SysFont(font, size)
+
+    text_surface = font.render(message, True, color)
+    text_rectangle = text_surface.get_rect()
+
+    text_rectangle.center = (x_cord, y_cord)
+    game_display.blit(text_surface, text_rectangle)
+
+    du()
 
 
 def game_loop():
-
     pass
 
 
 def game_update():
-    hpbar(Player1, WIDTH/3 - Player1.get_hp_bar().get_max_length(), HEIGHT/2)
-    hpbar(Player2, 2*WIDTH/3, HEIGHT/2)
+    hpbar(Player1, WIDTH / 3 - Player1.get_hp_bar().get_max_length(), HEIGHT / 2)
+    hpbar(Player2, 2 * WIDTH / 3, HEIGHT / 2)
 
 
 def main():
     draw_env()
     Player1.basic_attack(Player2)
+    render_text("hi", 500, 500, size=10)
     while True:
         for action in pygame.event.get():
             if action.type == pygame.QUIT:

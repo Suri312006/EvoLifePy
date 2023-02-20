@@ -12,8 +12,3 @@ class Damage(Base):
         else:
             print("Cannot use Barrage move, not enough mana")
 
-    def move2(self, other):
-        self.barrage(other)
-
-    def get_move2(self):
-        return "Barrage", self._barrageCost

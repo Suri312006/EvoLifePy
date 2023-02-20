@@ -25,3 +25,6 @@ def light_red():
 
 def red():
     return (255, 0, 0)
+
+def black():
+    return (0,0,0)

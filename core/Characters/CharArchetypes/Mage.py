@@ -19,20 +19,3 @@ class Mage(Damage):
         other.get_hit(self._AP * self._mana)
         self._mana = 0
 
-    def move1(self, other):
-        self.basic_attack(other)
-
-    def move3(self, other):
-        self.spell_surge(other)
-
-    def move4(self, other):
-        self.final_spark(other)
-
-    def get_move1(self):
-        return "Basic Attack", self._basic_attack_cost
-
-    def get_move3(self):
-        return "Spell Surge", self._spell_surge_cost
-
-    def get_move4(self):
-        return "Final Spark", self._mana

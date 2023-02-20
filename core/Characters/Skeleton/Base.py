@@ -51,8 +51,3 @@ class Base:
     def get_hp_bar(self):
         return self._hbar
 
-    def move1(self, other):
-        self.basic_attack(other)
-
-    def get_move1(self):
-        return "Basic Attack", self._basic_attack_cost

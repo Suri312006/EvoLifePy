@@ -24,18 +24,3 @@ class Assassin(Damage):
 
 
 
-
-    def move3(self, other):
-        self.slash(other)
-    def move4(self,other):
-        self.execute(other)
-
-
-
-
-
-    def get_move3(self):
-        return "Slash", self._slash_move_cost
-
-    def get_move4(self):
-        return "Execute", self._execute_move_cost
