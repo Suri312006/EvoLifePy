@@ -62,8 +62,36 @@ def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.
 
     du()
 
+clicked = False
+def button(text="default", font='arial', text_size=10,text_color=color.black(), x_cord=0, y_cord=0, width=75, height=15, inactive_color=color.light_red(), active_color=color.red(), action=None, action_target=None):
+    global clicked
+    mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+
+    if x_cord + width > mouse[0] > x_cord and y_cord + height > mouse[1] > y_cord:
+        pygame.draw.rect(game_display, active_color, (x_cord, y_cord, width, height))
+
+
+        if not clicked:
+            if click[0] == 1 and action is not None:
+                action(action_target)
+                clicked = True
+
+
+    else:
+        pygame.draw.rect(game_display, inactive_color, (x_cord, y_cord, width, height))
+
+    font = pygame.sysfont.SysFont(font, text_size)
+
+    text_surface = font.render(text, True, text_color)
+    text_rectangle = text_surface.get_rect()
+
+    text_rectangle.center = ((x_cord + (width / 2)), (y_cord + (height / 2)))
+    game_display.blit(text_surface, text_rectangle)
+
 
 def game_loop():
+    button(text="attack", x_cord=500, y_cord=500, action=Player1.basic_attack, action_target=Player2)
     pass
 
 
@@ -74,8 +102,6 @@ def game_update():
 
 def main():
     draw_env()
-    Player1.basic_attack(Player2)
-    render_text("hi", 500, 500, size=10)
     while True:
         for action in pygame.event.get():
             if action.type == pygame.QUIT:
