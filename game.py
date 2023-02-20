@@ -27,12 +27,13 @@ clock = pygame.time.Clock()
 player1_attack = Button(text="attack", action=Player1.basic_attack, action_target=Player2)
 fullscreen_toggle = Button(text="toggle fullscreen", action=pygame.display.set_mode, action_target=[800,800])
 
+
 def loop_display_info():
     global WIDTH, HEIGHT
     WIDTH = pygame.display.Info().current_w
     HEIGHT = pygame.display.Info().current_h
-    print(pygame.display.list_modes())
-    button(fullscreen_toggle, WIDTH/5, HEIGHT/5)
+
+    #button(fullscreen_toggle, WIDTH/5, HEIGHT/5)
 
 
 
