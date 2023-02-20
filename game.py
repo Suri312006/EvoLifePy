@@ -62,15 +62,18 @@ def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.
 
     du()
 
+
 clicked = False
-def button(text="default", font='arial', text_size=10,text_color=color.black(), x_cord=0, y_cord=0, width=75, height=15, inactive_color=color.light_red(), active_color=color.red(), action=None, action_target=None):
-    global  clicked
+
+
+def button(text="default", font='arial', text_size=10, text_color=color.black(), x_cord=0, y_cord=0, width=75,
+           height=15, inactive_color=color.light_red(), active_color=color.red(), action=None, action_target=None):
+    global clicked
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
     if x_cord + width > mouse[0] > x_cord and y_cord + height > mouse[1] > y_cord:
         pygame.draw.rect(game_display, active_color, (x_cord, y_cord, width, height))
-
 
         if not clicked:
             if click[0] == 1 and action is not None:
