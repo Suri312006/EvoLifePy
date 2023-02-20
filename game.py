@@ -4,6 +4,7 @@ from core.Characters.CharArchetypes.Assassin import Assassin as ass
 from core.Characters.CharArchetypes.Mage import Mage as mag
 
 from core.util import Colors as color
+from core.elements.Button import Button as Button
 
 Player1 = ass(name="Zed")
 Player2 = mag(name="Lux")
@@ -14,6 +15,8 @@ HEIGHT = 800
 game_display = pygame.display.set_mode([WIDTH, HEIGHT])
 event = pygame.event.wait()
 clock = pygame.time.Clock()
+
+player1_attack = Button(text="attack", action=Player1.basic_attack, action_target=Player2)
 
 
 def du():
@@ -28,6 +31,20 @@ def init():
 
 def draw_env():
     game_display.fill(color.white())
+    du()
+
+
+def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.black(), center=True):
+    font = pygame.sysfont.SysFont(font, size)
+
+    text_surface = font.render(message, True, color)
+    text_rectangle = text_surface.get_rect()
+
+    if center:
+        text_rectangle.center = (x_cord, y_cord)
+
+    game_display.blit(text_surface, text_rectangle)
+
     du()
 
 
@@ -51,52 +68,33 @@ def hpbar(player, x_cord, y_cord):
     du()
 
 
-def render_text(message, x_cord=0, y_cord=0, font="arial", size=10, color=color.black()):
-    font = pygame.sysfont.SysFont(font, size)
-
-    text_surface = font.render(message, True, color)
-    text_rectangle = text_surface.get_rect()
-
-    text_rectangle.center = (x_cord, y_cord)
-    game_display.blit(text_surface, text_rectangle)
-
-    du()
-
-
-clicked = False
-
-
-def button(text="default", font='arial', text_size=10, text_color=color.black(), x_cord=0, y_cord=0, width=75,
-           height=15, inactive_color=color.light_red(), active_color=color.red(), action=None, action_target=None):
-    global clicked
+def button(butt, x_cord=0, y_cord=0):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
-    if x_cord + width > mouse[0] > x_cord and y_cord + height > mouse[1] > y_cord:
-        pygame.draw.rect(game_display, active_color, (x_cord, y_cord, width, height))
+    if x_cord + butt.width > mouse[0] > x_cord and \
+            y_cord + butt.height > mouse[1] > y_cord:
+        pygame.draw.rect(game_display, butt.active_color,
+                         (x_cord, y_cord, butt.width, butt.height))
 
-        if not clicked:
-            if click[0] == 1 and action is not None:
-                action(action_target)
-                clicked = True
+        if not butt.clicked:
+            if click[0] == 1 and butt.action is not None:
+                butt.action(butt.action_target)
+                butt.clicked = True
 
-        if click[0] == 0: clicked = False
-
+        if click[0] == 0:
+            butt.clicked = False
 
     else:
-        pygame.draw.rect(game_display, inactive_color, (x_cord, y_cord, width, height))
+        pygame.draw.rect(game_display, butt.inactive_color,
+                         (x_cord, y_cord, butt.width, butt.height))
 
-    font = pygame.sysfont.SysFont(font, text_size)
-
-    text_surface = font.render(text, True, text_color)
-    text_rectangle = text_surface.get_rect()
-
-    text_rectangle.center = ((x_cord + (width / 2)), (y_cord + (height / 2)))
-    game_display.blit(text_surface, text_rectangle)
+    render_text(butt.text, x_cord + butt.width / 2, y_cord + butt.height / 2, butt.font, butt.text_size,
+                butt.text_color)
 
 
 def game_loop():
-    button(text="attack", x_cord=500, y_cord=500, action=Player1.basic_attack, action_target=Player2)
+    button(player1_attack, 200, 200)
     pass
 
 
