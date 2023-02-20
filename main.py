@@ -1,8 +1,8 @@
-from core.CharTypes.Assasin import Assassin as ass
-from core.CharTypes.Fighter import Fighter as fig
+from core.Characters.CharArchetypes.Assasin import Assassin as ass
+from core.Characters.CharArchetypes.Mage import Mage as mag
 
 Player1 = ass(name="lol")
-Player2 = fig(name="okay")
+Player2 = mag(name="okay")
 
 
 def healthrep(player):
@@ -12,11 +12,14 @@ def healthrep(player):
 def sop(string):
     print(string)
 
+def moverep(player,getmove,  other)
+    print("{} used {} on {}".format(player.get_name, getmove[0],other.get_name ))
 
 def main():
     healthrep(Player1)
-    Player1.basic_attack(Player2)
+    Player1.move1(Player2)
     sop("Player 1 used Basic attack on Player 2")
+
     healthrep(Player2)
     Player2.bite(Player1)
     sop("Player 2 used bite on Player 1")

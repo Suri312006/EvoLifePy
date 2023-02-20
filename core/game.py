@@ -1,11 +1,7 @@
-import time
 import pygame
-from pygame.locals import *
 
-from CharTypes.Assasin import Assassin as ass
-from CharTypes.Mage import Mage as mag
-from CharTypes.Fighter import Fighter as fig
-from CharTypes.Tank import Tank as tan
+from core.Characters.CharArchetypes.Assasin import Assassin as ass
+from core.Characters.CharArchetypes.Mage import Mage as mag
 
 from core.util import Colors as color
 
@@ -69,7 +65,7 @@ def game_update():
 
 def main():
     draw_env()
-    print(Player1.health_report())
+    Player1.basic_attack(Player2)
     while True:
         for action in pygame.event.get():
             if action.type == pygame.QUIT:
