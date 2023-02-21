@@ -1,10 +1,12 @@
 import pygame
 import core.util.Colors as color
-class Elements:
+from core.elements.Button import Button
+
+
+class Elements():
 
     def __init__(self, display):
         self._game_display = display
-
 
     def render_text(self, message, x_cord=0, y_cord=0, font="arial", size=10, color=color.black(), center=True):
         font = pygame.sysfont.SysFont(font, size)
@@ -20,12 +22,12 @@ class Elements:
         pygame.display.update()
 
     def hpbar(self, player, x_cord, y_cord, ):
-        length = player.get_hp_bar().get_max_length()
-        height = player.get_hp_bar().hp_bar_height
+        length = player.char.get_hp_bar().get_max_length()
+        height = player.char.get_hp_bar().hp_bar_height
 
-        hp_bar_le = player.get_hp_bar().get_current_length()
-        hp_color = player.get_hp_bar().get_color()
-        offset = player.get_hp_bar().offset
+        hp_bar_le = player.char.get_hp_bar().get_current_length()
+        hp_color = player.char.get_hp_bar().get_color()
+        offset = player.char.get_hp_bar().offset
 
         # background rect
         pygame.draw.rect(self._game_display, color=color.gray(),
@@ -62,6 +64,4 @@ class Elements:
                              (x_cord, y_cord, butt.width, butt.height))
 
         self.render_text(butt.text, x_cord + butt.width / 2, y_cord + butt.height / 2, butt.font, butt.text_size,
-                    butt.text_color)
-
-
+                         butt.text_color)
