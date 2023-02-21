@@ -37,15 +37,15 @@ class game_screen:
         self.Player1.set_enemy(self.Player2)
         self.Player2.set_enemy(self.Player1)
 
-        self.Player1_moves = [self.Player1.get_button1(),
-                              self.Player1.get_button2(),
-                              self.Player1.get_button3(),
-                              self.Player1.get_button4()]
+        self.Player1_moves = [self.Player1.button_move1(),
+                              self.Player1.button_move2(),
+                              self.Player1.button_move3(),
+                              self.Player1.button_move4()]
 
-        self.Player2_moves = [self.Player2.get_button1(),
-                              self.Player2.get_button2(),
-                              self.Player2.get_button3(),
-                              self.Player2.get_button4()]
+        self.Player2_moves = [self.Player2.button_move1(),
+                              self.Player2.button_move2(),
+                              self.Player2.button_move3(),
+                              self.Player2.button_move4()]
 
     def draw_env(self):
         self.display.fill(color.white())
