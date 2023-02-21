@@ -65,3 +65,10 @@ class Elements():
 
         self.render_text(butt.text, x_cord + butt.width / 2, y_cord + butt.height / 2, butt.font, butt.text_size,
                          butt.text_color)
+
+    def character(self, char_img, char_img_x=1000, char_img_y=1000, x_cord=0, y_cord=0):
+
+        scaled_img = pygame.transform.scale(char_img, (char_img_x, char_img_y))
+
+        self._game_display.blit(scaled_img, (x_cord, y_cord))
+        pygame.display.update()
