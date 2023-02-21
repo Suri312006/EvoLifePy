@@ -9,7 +9,6 @@ from core.Player import Player
 import core.util.References as image
 from core.elements.Elements import Elements as elements
 
-
 Player1 = Player(image.suri(), MutantRaven)
 Player2 = Player(image.naila(), MutantRaven)
 
@@ -25,18 +24,16 @@ clock = pygame.time.Clock()
 
 fullscreen_toggle = Button(text="toggle fullscreen", action=pygame.display.set_mode, action_target=[800, 800])
 
-#
-# player1_move1 = Button(text=Player1.char.get_move1()[0], action=Player1.char.basic_attack, action_target=Player2.char,
-#                         width=150, height=50, text_size=30)
 
-player1_move1 = Player1.get_button1(Player2)
+Player1_moves = [Player1.get_button1(enemy=Player2),
+                 Player1.get_button2(enemy=Player2),
+                 Player1.get_button3(enemy=Player2),
+                 Player1.get_button4(enemy=Player2)]
 
-# player1_move3 = Button(text=Player1.get_move3()[0], action=Player1.move3, action_target=Player2, width=150, height=50,
-#                         text_size=30)
-# player1_move4 = Button(text=Player1.get_move4()[0], action=Player1.move4, action_target=Player2, width=150, height=50,
-#                         text_size=30)
-
-# player1_buttons = (, Player1.get_button2(), Player1.get_button3(), Player1.get_button4())
+Player2_moves = [Player2.get_button1(enemy=Player1),
+                 Player2.get_button2(enemy=Player1),
+                 Player2.get_button3(enemy=Player1),
+                 Player2.get_button4(enemy=Player1)]
 
 
 def loop_display_info():
@@ -64,7 +61,7 @@ def draw_env():
 
 
 def game_loop():
-    element.button(player1_move1, 200, 600)
+    element.button(Player1_moves[0], 200, 600)
 
 
 def game_update():
