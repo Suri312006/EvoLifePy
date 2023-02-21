@@ -2,7 +2,7 @@ from core.elements.Healthbar import Healthbar as hpbar
 
 
 class Base:
-
+#Creates base character
     def __init__(self, name='nothing', health=100, ad=15, ap=20, mana=40, alive=True, hp_x_cord=20, hp_y_cord=20):
         self._name = name
         self._max_health = health

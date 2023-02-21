@@ -56,8 +56,8 @@ class game_screen:
         self.element.button(self.Player1_moves[0], 200, 600)
 
     def game_update(self):
-        self.element.hpbar(self.Player1, self.display_width / 3 - self.Player1.get_char_hp_bar().get_max_length(), self.display_height / 2)
-        self.element.hpbar(self.Player2, 2 * self.display_width / 3, self.display_height / 2)
+        self.element.hp_bar(self.Player1, self.display_width / 3 - self.Player1.get_char_hp_bar().get_max_length(), self.display_height / 2)
+        self.element.char_status(self.Player2, 2 * self.display_width / 3, self.display_height / 2)
 
     def run(self):
         self.game_loop()

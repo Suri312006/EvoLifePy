@@ -3,7 +3,7 @@ from core.util import Colors as color
 
 class Healthbar:
 
-    def __init__(self, player, length=100, height=30, offset=10):
+    def __init__(self, player, length=300, height=30, offset=10):
         self._player = player
 
         self._max_hp = player.get_max_health()

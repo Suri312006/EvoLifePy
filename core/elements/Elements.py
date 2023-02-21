@@ -21,7 +21,7 @@ class Elements():
 
         pygame.display.update()
 
-    def hpbar(self, player, x_cord, y_cord, ):
+    def hp_bar(self, player, x_cord, y_cord, ):
         length = player.char.get_hp_bar().get_max_length()
         height = player.char.get_hp_bar().hp_bar_height
 
@@ -29,16 +29,45 @@ class Elements():
         hp_color = player.char.get_hp_bar().get_color()
         offset = player.char.get_hp_bar().offset
 
+
         # background rect
         pygame.draw.rect(self._game_display, color=color.gray(),
                          rect=(x_cord, y_cord, length, height))
-        # fillin rect
+        # fill-in rect
         pygame.draw.rect(self._game_display, color=color.white(),
                          rect=(x_cord + offset / 2, y_cord + offset / 2, length - offset, height - offset))
         # actual changing rect
         pygame.draw.rect(self._game_display, color=hp_color,
                          rect=(x_cord + offset / 2, y_cord + offset / 2, hp_bar_le - offset, height - offset))
         pygame.display.update()
+
+
+    def char_status(self,player,x_cord,y_cord):
+        char = player.char
+
+        length = player.char.get_hp_bar().get_max_length()
+        height = player.char.get_hp_bar().hp_bar_height
+
+        hp_bar_le = player.char.get_hp_bar().get_current_length()
+        hp_color = player.char.get_hp_bar().get_color()
+        offset = player.char.get_hp_bar().offset
+
+        pygame.draw.rect(self._game_display, color=color.gray(),
+                         rect=(x_cord , y_cord, length * 5, height * 3))
+
+
+        # background rect
+        pygame.draw.rect(self._game_display, color=color.gray(),
+                         rect=(x_cord, y_cord, length, height))
+        # fill-in rect
+        pygame.draw.rect(self._game_display, color=color.white(),
+                         rect=(x_cord + offset / 2, y_cord + offset / 2, length - offset, height - offset))
+        # actual changing rect
+        pygame.draw.rect(self._game_display, color=hp_color,
+                         rect=(x_cord + offset / 2, y_cord + offset / 2, hp_bar_le - offset, height - offset))
+        pygame.display.update()
+
+
 
     def button(self, butt, x_cord=0, y_cord=0):
         mouse = pygame.mouse.get_pos()
