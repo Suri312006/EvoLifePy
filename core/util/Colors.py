@@ -6,6 +6,8 @@ def light_green():
 def white():
     return (255, 255, 255)
 
+def off_white():
+    return(200,200,200)
 
 def gray():
     return (50, 50, 50)

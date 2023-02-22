@@ -22,7 +22,7 @@ from core.Player import Player
 
 
 class game_screen:
-    def __init__(self, display, display_width, display_height,):
+    def __init__(self, display, display_width, display_height, ):
         self.display = display
         self.display_width = display_width
         self.display_height = display_height
@@ -31,8 +31,8 @@ class game_screen:
         self.clock = pygame.time.Clock()
         self.element = elements(self.display)
 
-        self.Player1 = Player(image.suri(), MutantRaven)
-        self.Player2 = Player(image.naila(), MutantRaven)
+        self.Player1 = Player(self.display, image.suri(), MutantRaven)
+        self.Player2 = Player(self.display, image.naila(), MutantRaven)
 
         self.Player1.set_enemy(self.Player2)
         self.Player2.set_enemy(self.Player1)
@@ -47,17 +47,19 @@ class game_screen:
                               self.Player2.button_move3(),
                               self.Player2.button_move4()]
 
+        self._block = self.display_height / 16
+
     def draw_env(self):
         self.display.fill(color.white())
         self.element.character(self.Player1.get_char_img(), x_cord=10, y_cord=15)
         pygame.display.update()
 
     def game_loop(self):
-        self.element.button(self.Player1_moves[0], 200, 600)
+        self.Player1_moves[0].run(200, 600)
 
     def game_update(self):
-        self.element.hp_bar(self.Player1, self.display_width / 3 - self.Player1.get_char_hp_bar().get_max_length(), self.display_height / 2)
-        self.element.char_status(self.Player2, 2 * self.display_width / 3, self.display_height / 2)
+        self.element.char_status(self.Player1, 16 * self._block, 9 * self._block)
+        self.element.char_status(self.Player2, 9 * self._block, 3 * self._block)
 
     def run(self):
         self.game_loop()

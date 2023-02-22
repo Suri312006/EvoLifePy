@@ -1,4 +1,4 @@
-from core.elements.Healthbar import Healthbar as hpbar
+from core.elements.CharStatus import Healthbar as char_status
 
 
 class Base:
@@ -11,14 +11,17 @@ class Base:
         self._AP = ap
         self._mana = mana
         self._alive = alive
-        self._hbar = hpbar(self)
+        self._char_status = char_status(self)
         self._basic_attack_cost = 1
 
     def add_health(self, additional_health):
         self._health += additional_health
 
     def get_hit(self, damage):
-        self._health -= damage
+        if self._health - damage >=0:
+            self._health -= damage
+        else:
+            self._health=0
 
     def hit(self, other, damage):
         other.get_hit(damage)
@@ -37,6 +40,8 @@ class Base:
 
     def get_health(self):
         return round(self._health, 2)
+    def get_mana(self):
+        return round(self._mana, 2)
 
     def get_max_health(self):
         return round(self._max_health, 2)
@@ -48,6 +53,6 @@ class Base:
         return [self.get_health(),
                 100 * round(self.get_health() / self.get_max_health(), 4)]
 
-    def get_hp_bar(self):
-        return self._hbar
+    def get_char_status(self):
+        return self._char_status
 
