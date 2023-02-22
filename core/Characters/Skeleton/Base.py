@@ -1,4 +1,3 @@
-
 class Base:
     # Creates base character
     def __init__(self, name='nothing', health=100, ad=15, ap=20, mana=40, alive=True):
@@ -23,8 +22,6 @@ class Base:
 
     def get_max_mana(self):
         return round(self._max_mana, 2)
-
-
 
     def get_name(self):
         return self._name

@@ -3,9 +3,9 @@ from core.Characters.Skeleton.Base import Base
 
 class Fighter(Base):
 
-    def __init__(self, name="fighter", health=120, ad=20, ap=25, mana=40, alive=True, maxHpPercentage=0.15):
+    def __init__(self, name="fighter", health=120, ad=20, ap=25, mana=40, alive=True, max_hp_percentage=0.15):
         super().__init__(name, health, ad, ap, mana, alive)
-        self._maxHpPercentage = maxHpPercentage
+        self._maxHpPercentage = max_hp_percentage
 
         self._inverseADMult = 2
         self._seriousPunchCost = 25

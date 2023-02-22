@@ -1,6 +1,5 @@
 import pygame
 import core.util.Colors as color
-#from core.elements.Button import Button
 
 
 class Elements():
@@ -22,7 +21,6 @@ class Elements():
         pygame.display.update()
 
     def character(self, char_img, char_img_x=1000, char_img_y=1000, x_cord=0, y_cord=0):
-
         scaled_img = pygame.transform.scale(char_img, (char_img_x, char_img_y))
 
         self._game_display.blit(scaled_img, (x_cord, y_cord))

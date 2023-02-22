@@ -21,6 +21,7 @@ import core.util.References as image
 from core.Player import Player
 from core.elements.CharStatus import CharStatus
 
+
 class game_screen:
     def __init__(self, display, display_width, display_height, ):
         self.display = display
@@ -33,7 +34,6 @@ class game_screen:
 
         self.Player1 = Player(self.display, image.suri(), MutantRaven)
         self.Player2 = Player(self.display, image.naila(), MutantRaven)
-
 
         self.Player1.set_enemy(self.Player2)
         self.Player2.set_enemy(self.Player1)
