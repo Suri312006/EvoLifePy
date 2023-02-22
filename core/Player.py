@@ -1,5 +1,5 @@
 from core.elements.Button import Button
-
+from core.elements.CharStatus import CharStatus
 
 
 class Player:
@@ -8,7 +8,7 @@ class Player:
         self.player_img = player_img
         self.display = display
         self.char = lmao()
-
+        self.char_status = CharStatus(display,self.char)
         self.move_button_font = "PKMN RBYGSC Regular"
         self.move_button_width = 300
         self.move_button_height = 75
@@ -47,3 +47,6 @@ class Player:
 
     def get_char_img(self):
         return self.char.get_img()
+
+    def get_char_status(self):
+        return self.char_status

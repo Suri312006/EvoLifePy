@@ -4,12 +4,12 @@ import pygame
 
 
 class CharStatus:
-    def __init__(self, display, player):
+    def __init__(self, display, char):
         # values here
         self.display = display
-        self.player = player
-        self.char_healthbar = Healthbar(player)
-        self.char_manabar = Manabar(player)
+        self.char = char
+        self.char_healthbar = Healthbar(self.char)
+        self.char_manabar = Manabar(self.char)
         pass
 
     def run(self, x_cord, y_cord):

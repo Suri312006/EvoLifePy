@@ -1,5 +1,3 @@
-from core.elements.Bars import Healthbar as char_status
-
 
 class Base:
     # Creates base character
@@ -9,6 +7,7 @@ class Base:
         self._health = health
         self._AD = ad
         self._AP = ap
+        self._max_mana = mana
         self._mana = mana
         self._alive = alive
         self._basic_attack_cost = 1
@@ -16,22 +15,19 @@ class Base:
     def get_health(self):
         return round(self._health, 2)
 
-
-
     def get_mana(self):
         return round(self._mana, 2)
 
     def get_max_health(self):
         return round(self._max_health, 2)
 
+    def get_max_mana(self):
+        return round(self._max_mana, 2)
+
+
+
     def get_name(self):
         return self._name
-
-    def health_report(self):
-        return [self.get_health(),
-                100 * round(self.get_health() / self.get_max_health(), 4)]
-
-
 
     def add_health(self, additional_health):
         self._health += additional_health
@@ -56,4 +52,3 @@ class Base:
 
     def basic_attack(self, other):
         self.hit(other, self._AD)
-

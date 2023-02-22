@@ -2,10 +2,10 @@ from core.util import Colors as color
 
 
 class bar:
-    def __init__(self, player,
+    def __init__(self, char,
                  max_value, current_value, current_value_percent, default_color,
                  length=300, height=30, offset=10):
-        self._player = player
+        self._char = char
 
         self._max_value = max_value
 
@@ -34,14 +34,14 @@ class bar:
 
 class Healthbar(bar):
 
-    def __init__(self, player, length=300, height=30, offset=10):
-        super().__init__(player, length=length, height=height, offset=offset,
-                         max_value=player.get_char().get_max_health(), current_value=None, current_value_percent=None,
+    def __init__(self, char, length=300, height=30, offset=10):
+        super().__init__(char, length=length, height=height, offset=offset,
+                         max_value=char.get_max_health(), current_value=None, current_value_percent=None,
                          default_color=color.green())
 
     def update_status(self):
-        self._current_value = self._player.get_char().get_health()
-        self._current_value_percent = (100 * round(self._player.get_char().get_health() / self._player.get_char().get_max_health()))
+        self._current_value = self._char.get_health()
+        self._current_value_percent = (100 * round(self._char.get_health() / self._char.get_max_health(), 4))
 
     def get_color(self):
         self.update_status()
@@ -63,14 +63,14 @@ class Healthbar(bar):
 
 class Manabar(bar):
 
-    def __init__(self, player, length=300, height=30, offset=10):
-        super().__init__(player, length=length, height=height, offset=offset,
-                         max_value=player.get_char().get_max_health(), current_value=None, current_value_percent=None,
+    def __init__(self, char, length=300, height=30, offset=10):
+        super().__init__(char, length=length, height=height, offset=offset,
+                         max_value=char.get_max_health(), current_value=None, current_value_percent=None,
                          default_color=color.green())
 
     def update_status(self):
-        self._current_value = self._player.health_report()[0]
-        self._current_value_percent = self._player.health_report()[1]
+        self._current_value = self._char.get_max_mana()
+        self._current_value_percent = (100 * round(self._char.get_mana() / self._char.get_max_mana(), 4))
 
     def get_color(self):
         self.update_status()
@@ -88,4 +88,3 @@ class Manabar(bar):
     def get_current_length(self):
         self.update_status()
         return (self._current_value_percent / 100) * self._length
-
