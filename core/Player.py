@@ -1,6 +1,7 @@
 from core.elements.Button import Button
 
 
+
 class Player:
     def __init__(self, display, player_img, lmao):
         self.enemy = None
@@ -41,8 +42,8 @@ class Player:
                       width=self.move_button_width, height=self.move_button_height,
                       text_size=self.move_button_text_size)
 
-    def get_char_hp_bar(self):
-        return self.char.get_char_status()
+    def get_char(self):
+        return self.char
 
     def get_char_img(self):
         return self.char.get_img()

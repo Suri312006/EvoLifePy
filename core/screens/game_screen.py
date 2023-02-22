@@ -19,7 +19,7 @@ from core.util import Colors as color
 import core.util.References as image
 
 from core.Player import Player
-
+from core.elements.CharStatus import CharStatus
 
 class game_screen:
     def __init__(self, display, display_width, display_height, ):
@@ -33,6 +33,9 @@ class game_screen:
 
         self.Player1 = Player(self.display, image.suri(), MutantRaven)
         self.Player2 = Player(self.display, image.naila(), MutantRaven)
+
+        self.Player1_char_status = CharStatus(self.display,self.Player1)
+        self.Player2_char_status = CharStatus(self.display, self.Player2)
 
         self.Player1.set_enemy(self.Player2)
         self.Player2.set_enemy(self.Player1)
@@ -58,8 +61,8 @@ class game_screen:
         self.Player1_moves[0].run(200, 600)
 
     def game_update(self):
-        self.element.char_status(self.Player1, 16 * self._block, 9 * self._block)
-        self.element.char_status(self.Player2, 9 * self._block, 3 * self._block)
+        self.Player1_char_status.run(16 * self._block, 9 * self._block)
+        self.Player2_char_status.run(4 * self._block, 13 * self._block)
 
     def run(self):
         self.game_loop()
