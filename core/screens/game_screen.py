@@ -52,7 +52,7 @@ class game_screen:
 
     def draw_env(self):
         self.display.fill(color.white())
-        self.element.character(self.Player1.get_char_img(), x_cord=10, y_cord=15)
+        # self.element.character(self.Player1.get_char_img(), x_cord=10, y_cord=15)
         pygame.display.update()
 
     def game_loop(self):

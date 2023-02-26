@@ -30,3 +30,6 @@ def red():
 
 def black():
     return (0,0,0)
+
+def blue():
+    return (0,0,255)

@@ -36,7 +36,9 @@ def shark_doggy():
 def torti_cat():
     return pygame.image.load("core/util/references/TortiCat.jpg")
 
+
 def suri():
     return pygame.image.load("core/util/sprites/suri.png")
-def naila():
+
+
     return pygame.image.load("core/util/sprites/naila.png")
