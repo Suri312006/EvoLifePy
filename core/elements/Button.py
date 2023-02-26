@@ -36,6 +36,9 @@ class Button:
     def run(self, x_cord, y_cord):
         self.update_mouse()
 
+        # pygame.draw.rect(self.display, color.black(), (x_cord-self.width/16, y_cord-self.width/16,
+        # self.width-self.width/16, self.height-self.width/16))
+
         if x_cord + self.width > self.mouse[0] > x_cord and \
                 y_cord + self.height > self.mouse[1] > y_cord:
             pygame.draw.rect(self.display, self.active_color,
