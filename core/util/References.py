@@ -40,5 +40,5 @@ def torti_cat():
 def suri():
     return pygame.image.load("core/util/sprites/suri.png")
 
-
+def naila():
     return pygame.image.load("core/util/sprites/naila.png")

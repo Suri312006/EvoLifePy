@@ -56,7 +56,12 @@ class game_screen:
         pygame.display.update()
 
     def game_loop(self):
-        self.Player1_moves[0].run(200, 600)
+
+        for i in range(len(self.Player1_moves)):
+            self.Player1_moves[i].run(200,600+(i*100))
+
+        for i in range(len(self.Player2_moves)):
+            self.Player2_moves[i].run(1100,200+(i*100))
 
     def game_update(self):
         self.Player1.get_char_status().run(3 * self._block, 3 * self._block)
